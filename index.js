@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
-const homehtml = fs.readFileSync('telaInicial.html');
+const login = fs.readFileSync('login.html');
 const cardapio = fs.readFileSync('cafemenu.html');
-const csscardapio = fs.readFileSync('style.css');
+const home = fs.readFileSync('home.html');
 
 //const getip = require('./getIP');
 
@@ -16,12 +16,18 @@ app.listen(8888, function(erro) {
     }
 })
 
-app.get("/", function(request, response) {
-    response.end(homehtml);
+app.get("/login", function(request, response) {
+    response.end(login);
 })
 
+
+app.get("/home", function(request, response){
+    response.end
+})
+
+
 app.get("/cardapio", function(request, response){
-    response.end('/CafeMenu');
+    response.end('cardapio');
     
 })
 
