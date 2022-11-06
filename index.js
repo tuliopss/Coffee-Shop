@@ -17,12 +17,26 @@ app.listen(8888, function(erro) {
 })
 
 app.get("/login", function(request, response) {
-    response.end(login);
+     response.end(login);
+
+    let email = request.query.email;
+    let senha = request.query.senha;
+
+    if (email == undefined && senha == undefined) {
+        return response.send('Insira seu email e senha');
+    } else if (email == undefined && senha != undefined) {
+        return response.send('Informe seu email');
+    } else if (email != undefined && senha == undefined) {
+        return response.send('Insira sua senha');
+    }  else if (email != undefined && senha != undefined) {
+        return response.send('Seja bem vindo!');
+        //redireciona para o /home
+    }
 })
 
 
 app.get("/home", function(request, response){
-    response.end
+    response.end(home);
 })
 
 
