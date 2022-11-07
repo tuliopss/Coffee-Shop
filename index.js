@@ -37,28 +37,28 @@ app.get("/login", function(request, response) {
 
 app.get("/home", function(request, response){
     response.end(home);
+    
 })
 
 
 app.get("/cardapio", function(request, response){
     const itens = ["French Vanilla", "Caramel Macchiato", "Pumpkin Spice ", "Hazelnut", "Mocha"];
-    response.send(itens);
-    //response.end(cardapio);
+    //console.log(itens);
+    response.end(cardapio);
 
-    let itemPedido = request.query.itemPedido
-    var carrinho = [];
 
-    
-
-    function pedido(itemPedido) {  
-        for (let i = 0; i < itens.length; i++) {
-            
-    }
-
-    }
-    pedido(2)
-
-   
-    
 })
+
+app.get("/cardapio/pedido/:index", function(request, response){
+    const itens = [" French Vanilla", " Caramel Macchiato", " Pumpkin Spice ", " Hazelnut", " Mocha"];
+    
+    const {index} = request.params; //Passar um item na url e n da certo
+
+    response.send("Escolha o seu café:" + itens) //concatenar. nao envia 2 sends
+
+    console.log(itens[index]); //Linha p retornar o item escolhido q
+
+})
+
+
 
