@@ -41,6 +41,8 @@ app.get("/home", function(request, response){
 
 
 app.get("/cardapio", function(request, response){
+    const itens = ["French Vanilla", "Caramel Macchiato", "Pumpkin Spice ", "Hazelnut", "Mocha"];
+    console.log(itens)
     response.end('cardapio');
     
 })
