@@ -5,6 +5,7 @@ const login = fs.readFileSync('login.html');
 const cardapio = fs.readFileSync('cafemenu.html');
 const home = fs.readFileSync('home.html');
 
+
 //const getip = require('./getIP');
 
 
@@ -35,8 +36,9 @@ app.get("/login", function(request, response) {
 })
 
 
-app.get("/home", function(request, response){
+app.get("/", function(request, response){
     response.end(home);
+    //Imagem simbólica do restaurante. Não sai junto do arquivo html
     
 })
 
