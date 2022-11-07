@@ -42,8 +42,23 @@ app.get("/home", function(request, response){
 
 app.get("/cardapio", function(request, response){
     const itens = ["French Vanilla", "Caramel Macchiato", "Pumpkin Spice ", "Hazelnut", "Mocha"];
-    console.log(itens)
-    response.end('cardapio');
+    response.send(itens);
+    //response.end(cardapio);
+
+    let itemPedido = request.query.itemPedido
+    var carrinho = [];
+
+    
+
+    function pedido(itemPedido) {  
+        for (let i = 0; i < itens.length; i++) {
+            
+    }
+
+    }
+    pedido(2)
+
+   
     
 })
 
