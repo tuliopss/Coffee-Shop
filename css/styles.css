@@ -3021,8 +3021,8 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #fff;
-  background-color: #ffc800;
-  border-color: #ffc800;
+  background-color: #00cceb;
+  border-color: #00cceb;
 }
 .btn-primary:hover {
   color: #fff;
@@ -3972,9 +3972,9 @@ textarea.form-control-lg {
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #495057;
-  background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
+  color: black;
+  background-color: black;
+  border-color: black;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -11399,7 +11399,7 @@ header.masthead {
   padding-top: 10.5rem;
   padding-bottom: 6rem;
   text-align: center;
-  color: #fff;
+  color: black;
   background-image: url("../assets/img/header-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
