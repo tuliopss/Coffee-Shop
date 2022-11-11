@@ -2,14 +2,14 @@ const { text, response } = require('express');
 const express = require('express');
 const bodyParser = require('body-parser');
 var path = require('path');
-const session = require('express-session')
-const fs = require('fs');
+//const session = require('express-session')
+//const fs = require('fs');
 
 const app = express();
 
 //const login = fs.readFileSync('login.html');
-const cardapio = fs.readFileSync('cafemenu.html');
-const home = fs.readFileSync('index.html');
+//const cardapio = fs.readFileSync('cafemenu.html');
+//const home = fs.readFileSync('index.html');
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -19,10 +19,6 @@ app.set('views', path.join(__dirname, '/views'))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static(__dirname + '/public')); //upar css e js
 app.use(express.static(__dirname + '/CafeMenu')); //upar css e js
-
-
-
-
 
 
 app.listen(8888, function(erro) {
@@ -39,21 +35,21 @@ app.get('/cadastro', function(request, response){
 
 
 
-  app.post('/login', function(request, response) {
-var login = 'admin';
-var password = 123;
+app.post('/', function(request, response) {
+    var login = 'admin';
+    var password = 123;
     if (request.body.login == login && request.body.password == password) {
         //Logado c sucesso
-        //request.session.login = login;
-        console.log('logado')
+        console.log('Logado com sucesso')
         response.redirect('/home')
     } else {
+    
     response.render('login')
     }
 
 })
 
-app.get('/login', function (request, response) {
+app.get('/', function (request, response) {
     response.render('login');
 
     if (request.body.session) {
@@ -77,7 +73,8 @@ app.get("/cardapio", function(request, response){
 })
 
 app.get("/cardapio/pedido", function(request, response){
-    const itens = [" 0 - French Vanilla",
+    const itens = 
+    [" 0 - French Vanilla",
      " 1 - Caramel Macchiato", 
      " 2 -Pumpkin Spice ", 
      " 3 -Hazelnut", 
