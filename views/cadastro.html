@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <!--<link rel="javascript" href="cadastro.js"> -->
+    <script>
+        function verificaSenha() {
+            let password = document.getElementById('password');
+            let confirmPassword = document.getElementById('confirmPassword')
+if (password == confirmPassword) {
+    alert('Registrado com sucesso');
+    return true;
+} else {
+    alert('Insira senhas coincidentes')
+    return false;
+}
+}
+    </script>
+</head>
+<body>
+    <form >
+    <p>Login</p>
+    <input type="email" name="login" id="email"><button>Email</button>
+
+    <p>Senha</p>
+    <input type="password" name="senha" id="password" onchange="verificaSenha()"> 
+    <p>Confirme sua senha</p>
+    <input type="password" name="senha" id="confirmPassword" onchange="verificaSenha()"> 
+
+
+    <br>
+    <input type="submit" name="acao" value="Cadastrar" onclick="verificaSenha()">
+</form>
+</body>
+</html>
