@@ -18,9 +18,12 @@ app.set('views', path.join(__dirname, '/views'))
 
 
 
+
+
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static(__dirname + '/public')); //upar css e js
 app.use(express.static(__dirname + '/CafeMenu')); //upar css e js
+
 
 
 app.listen(8888, function(erro) {
@@ -81,7 +84,8 @@ app.get("/cardapio/pedido", function(request, response){
      " 1 - Caramel Macchiato", 
      " 2 -Pumpkin Spice ", 
      " 3 -Hazelnut", 
-     " 4 - Mocha"];
+     " 4 - Mocha",
+     " 5 - Café com Leite"];
 
     //Gerar uma interface gráfica para os pedidos
     response.render('pedido')
@@ -91,25 +95,52 @@ app.get("/cardapio/pedido", function(request, response){
 })
 
 
-
 app.get("/cardapio/pedido/:index", function(request, response){
     const itens = [" 0 - French Vanilla",
      " 1 - Caramel Macchiato", 
      " 2 -Pumpkin Spice ", 
      " 3 -Hazelnut", 
-     " 4 - Mocha"];
+     " 4 - Mocha",
+     " 5 - Café com Leite"];
 
     const {index} = request.params;
-    if (index > 4) {
-        console.log('Item inválido')
-        
-    }
+    if(index == 0) {
+            response.render('vanilla');
 
-    //Gerar uma interface gráfica interativa para escolher um pedido
+            }else if (index == 1) {
+            response.render('caramel');
+            
+             } else if (index == 2) {
+            response.render('pumpkin');
+
+             } else if (index == 3) {
+            response.render('hazelnut')
+
+             } else if (index == 4) {
+            response.render('mocha')
+
+            } else if (index == 5) {
+            response.render('leite')
+
+            } else if (index > 5) {
+                response.send('<h1>Item não registrado</h1>')
+            }
     
-    response.send("Escolha o seu café:" + itens)    
+    //Gerar uma interface gráfica interativa para escolher um pedido
+
+
+    //response.send("Escolha o seu café:" + itens)    
     console.log('Você escolheu o café: ' + itens[index])                                                                            //" <br><input type='text' id='pedido'> " + " <br><button onclick='pedido()'>Escolher</button>") //concatenar. nao envia 2 sends
- 
+})
+
+app.get('/sobremesa', function(req, res){
+    const sobremesa = [ "0 - Donut ",
+    " 1 - Cherry Pie",
+    " 2 - Cinnammon Roll",
+    " 3 - Cheesecake"
+    ]
+    console.log(sobremesa);
+    res.render('sobremesa')
 })
 
 
