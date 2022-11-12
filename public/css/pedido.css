@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(151, 131, 131);
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
+.grid-img {
+    padding: 20px;
+    text-align: center;
+    
+    
+}
