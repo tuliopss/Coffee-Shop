@@ -13,18 +13,14 @@ const app = express();
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.set('views', path.join(__dirname, '/views'))
-
-
-
-
+app.set('views', path.join(__dirname, '/views')) //render
 
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static(__dirname + '/public')); //upar css e js
 app.use(express.static(__dirname + '/CafeMenu')); //upar css e js
 
-
+var pedidos = require('./pedidos.js')
 
 app.listen(8888, function(erro) {
     if (erro) {
@@ -35,24 +31,26 @@ app.listen(8888, function(erro) {
 })
 
 app.get('/cadastro', function(request, response){
-    response.render('cadastro.html') //Completar a tela de cadastro
+    response.render('cadastro') //Completar a tela de cadastro
 })
 
 
 
 app.post('/', function(request, response) {
-    var login = 'admin';
-    var password = 123;
+  
+
+    const login = 'admin';
+    const password = 123;
     if (request.body.login == login && request.body.password == password) {
-
         //Logado c sucesso
-
         console.log('Logado com sucesso')
         response.redirect('/home')
+
     } else {
-    
+    console.log('Login inválido')
     response.render('login')
-    }
+    } 
+    
 
 })
 
@@ -106,21 +104,31 @@ app.get("/cardapio/pedido/:index", function(request, response){
     const {index} = request.params;
     if(index == 0) {
             response.render('vanilla');
+            let valor = pedidos.valor(0);
 
             }else if (index == 1) {
             response.render('caramel');
+            let valor = pedidos.valor(1);
+
             
              } else if (index == 2) {
             response.render('pumpkin');
+            let valor = pedidos.valor(2);
 
              } else if (index == 3) {
             response.render('hazelnut')
+            let valor = pedidos.valor(3);
+
 
              } else if (index == 4) {
             response.render('mocha')
+            let valor = pedidos.valor(4);
+
 
             } else if (index == 5) {
             response.render('leite')
+            let valor = pedidos.valor(5);
+
 
             } else if (index > 5) {
                 response.send('<h1>Item não registrado</h1>')
@@ -128,8 +136,6 @@ app.get("/cardapio/pedido/:index", function(request, response){
     
     //Gerar uma interface gráfica interativa para escolher um pedido
 
-
-    //response.send("Escolha o seu café:" + itens)    
     console.log('Você escolheu o café: ' + itens[index])                                                                            //" <br><input type='text' id='pedido'> " + " <br><button onclick='pedido()'>Escolher</button>") //concatenar. nao envia 2 sends
 })
 
