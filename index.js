@@ -105,29 +105,35 @@ app.get("/cardapio/pedido/:index", function(request, response){
     if(index == 0) {
             response.render('vanilla');
             let valor = pedidos.valor(0);
+            console.log('Você escolheu o café: ' + itens[index])          
+
 
             }else if (index == 1) {
             response.render('caramel');
             let valor = pedidos.valor(1);
+            console.log('Você escolheu o café: ' + itens[index])                                                                       
+
 
             
              } else if (index == 2) {
             response.render('pumpkin');
             let valor = pedidos.valor(2);
-
+            console.log('Você escolheu o café: ' + itens[index])                                                                          
              } else if (index == 3) {
             response.render('hazelnut')
             let valor = pedidos.valor(3);
-
+            console.log('Você escolheu o café: ' + itens[index])                                                                          
 
              } else if (index == 4) {
             response.render('mocha')
             let valor = pedidos.valor(4);
-
+            console.log('Você escolheu o café: ' + itens[index])       
+                                                                               
 
             } else if (index == 5) {
             response.render('leite')
             let valor = pedidos.valor(5);
+            console.log('Você escolheu o café: ' + itens[index])                                                                          
 
 
             } else if (index > 5) {
@@ -136,7 +142,6 @@ app.get("/cardapio/pedido/:index", function(request, response){
     
     //Gerar uma interface gráfica interativa para escolher um pedido
 
-    console.log('Você escolheu o café: ' + itens[index])                                                                            //" <br><input type='text' id='pedido'> " + " <br><button onclick='pedido()'>Escolher</button>") //concatenar. nao envia 2 sends
 })
 
 app.get('/sobremesa', function(req, res){

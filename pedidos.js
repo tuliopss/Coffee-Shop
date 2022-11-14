@@ -1,29 +1,51 @@
+
 function valor(index) {
-    if (index == 0) {
-        let preco = 3.00
-        console.log('Valor do French Vanilla = ' +'$'+ preco)
-    }  if (index == 1) {
-        let preco = 3.75
-        console.log('Valor do Caramel Macchiato= '+'$' + preco)
+
+    let itens = [];
+
+    function Cafe (id, name, price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
     }
+
+        const french = new Cafe (0, 'French Vanilla', 3.00);
+        const caramel = new Cafe(1, 'Caramel Macchiato', 3.75);
+        const pumpkin = new Cafe(2, 'Pumpkin Spice', 3.50);
+        const hazelnut = new Cafe(3, 'Hazelnut', 4.00);
+        const mocha = new Cafe(4, 'Mocha', 4.50);
+        const leite = new Cafe(5, 'Café com leite', 2.50);
+
+        itens.push(french, caramel, pumpkin, hazelnut, mocha, leite);
+        
+
+    if (index == 0) {
+        console.log(itens[0]);
+
+    }  if (index == 1) {
+        console.log(itens[1]);
+
+    }
+
     if (index == 2) {
-        let preco = 3.50
-        console.log('Valor do Pumpkin Spice = '+'$' + preco)
+        console.log(itens[2]);
+
     }
     if (index == 3) {
-        let preco = 4.00
-        console.log('Valor do Hazelnut = ' +'$'+ preco)
+        console.log(itens[3]);
+
     }
     if (index == 4) {
-        let preco = 4.50
-        console.log('Valor do Café com Leite = ' +'$'+ preco)
+        console.log(itens[4]);
+
     }
     if (index == 5) {
-        let preco = 2.50
-        console.log('Valor = '+'$' + preco)
+        console.log(itens[5]);
+
     }
  
 }
+
 
 module.exports = {
     valor
