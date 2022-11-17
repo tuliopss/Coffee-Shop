@@ -5,6 +5,7 @@ function Cafe (id, name, price) {
     this.price = price;
 }
 
+
 let itens = []; //criaçao dos objetos café
 
         const french = new Cafe (0, 'French Vanilla', 3.00);
@@ -45,6 +46,9 @@ function valor(index) { //função para mostrar o item passado no parametro
  
 }
 
+function adicionarCarrinho() {
+    
+}
 
 
 

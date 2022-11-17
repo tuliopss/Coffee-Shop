@@ -123,7 +123,6 @@ app.get("/cardapio/pedido/:index", function(request, response){ //fazer o pedido
             response.render('mocha')
             let valor = pedidos.valor(4);
             
-            let pedir = pedidos.adicionarCarrinho(4)
             console.log('Você escolheu o café: ' + itens[index])       
                                                                                
 
