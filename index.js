@@ -3,26 +3,22 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var path = require('path');
 //const session = require('express-session')
-//const fs = require('fs');
 
 const app = express();
 
-//const login = fs.readFileSync('login.html');
-//const cardapio = fs.readFileSync('cafemenu.html');
-//const home = fs.readFileSync('index.html');
-
+//renderizar as coisas
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, '/views')) //render
 
 
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({extended:true})) //pegar o login
 app.use(express.static(__dirname + '/public')); //upar css e js
 app.use(express.static(__dirname + '/CafeMenu')); //upar css e js
 
-var pedidos = require('./pedidos.js')
+var pedidos = require('./public/js/pedidos.js')
 
-app.listen(8888, function(erro) {
+app.listen(8888, function(erro) { //ligar o servidor
     if (erro) {
         console.log('Erro ao iniciar o servidor')
     } else {
@@ -31,14 +27,13 @@ app.listen(8888, function(erro) {
 })
 
 app.get('/cadastro', function(request, response){
-    response.render('cadastro') //Completar a tela de cadastro
+    response.render('cadastro') //Completar a tela de cadastro [nao ta pronta]
 })
 
 
 
-app.post('/', function(request, response) {
+app.post('/', function(request, response) { //rota de login (login pre definido)
   
-
     const login = 'admin';
     const password = 123;
     if (request.body.login == login && request.body.password == password) {
@@ -64,26 +59,26 @@ app.get('/', function (request, response) {
 })
 
 
-app.get("/home", function(request, response){
+app.get("/home", function(request, response){ //rota home
     response.sendFile(path.join(__dirname + '/index.html'))
     
 })
 
 
-app.get("/cardapio", function(request, response){
+app.get("/cardapio", function(request, response){ //rota de cardapio
     const itens = ["French Vanilla", "Caramel Macchiato", "Pumpkin Spice ", "Hazelnut", "Mocha"];
     response.render('cafemenu');
 
 })
 
-app.get("/cardapio/pedido", function(request, response){
+app.get("/cardapio/pedido", function(request, response){ //rota de pedido
     const itens = 
     [" 0 - French Vanilla",
      " 1 - Caramel Macchiato", 
      " 2 -Pumpkin Spice ", 
      " 3 -Hazelnut", 
      " 4 - Mocha",
-     " 5 - Café com Leite"];
+     " 5 - Express"];
 
     //Gerar uma interface gráfica para os pedidos
     response.render('pedido')
@@ -93,13 +88,13 @@ app.get("/cardapio/pedido", function(request, response){
 })
 
 
-app.get("/cardapio/pedido/:index", function(request, response){
+app.get("/cardapio/pedido/:index", function(request, response){ //fazer o pedido (localhost:8888/cardapio/pedido/[numero do item])
     const itens = [" 0 - French Vanilla",
      " 1 - Caramel Macchiato", 
      " 2 -Pumpkin Spice ", 
      " 3 -Hazelnut", 
      " 4 - Mocha",
-     " 5 - Café com Leite"];
+     " 5 - Express"];
 
     const {index} = request.params;
     if(index == 0) {
@@ -127,6 +122,8 @@ app.get("/cardapio/pedido/:index", function(request, response){
              } else if (index == 4) {
             response.render('mocha')
             let valor = pedidos.valor(4);
+            
+            let pedir = pedidos.adicionarCarrinho(4)
             console.log('Você escolheu o café: ' + itens[index])       
                                                                                
 
