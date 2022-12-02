@@ -18,6 +18,8 @@ app.use(express.static(__dirname + '/CafeMenu')); //upar css e js
 
 var pedidos = require('./public/js/pedidos.js')
 
+let carrinho = [];
+
 app.listen(8888, function(erro) { //ligar o servidor
     if (erro) {
         console.log('Erro ao iniciar o servidor')
@@ -26,9 +28,27 @@ app.listen(8888, function(erro) { //ligar o servidor
     }
 })
 
+// if (request.body.session) {
+//     response.render(path.join('index.html'))
+
+// }
+
 app.get('/cadastro', function(request, response){
     response.render('cadastro') //Completar a tela de cadastro [nao ta pronta]
 })
+
+app.get('/contato', function(request, response){
+    response.render('contato') //Rota contato
+})
+
+app.get('/time', function(request, response){
+    response.render('time') //Rota time
+})
+
+app.get('/sobre', function(request, response){
+    response.render('sobre') //Rota sobre
+})
+
 
 
 
@@ -67,9 +87,12 @@ app.get("/home", function(request, response){ //rota home
 
 app.get("/cardapio", function(request, response){ //rota de cardapio
     const itens = ["French Vanilla", "Caramel Macchiato", "Pumpkin Spice ", "Hazelnut", "Mocha"];
+    console.log(carrinho)
     response.render('cafemenu');
+    
 
 })
+
 
 app.get("/cardapio/pedido", function(request, response){ //rota de pedido
     const itens = 
@@ -137,6 +160,12 @@ app.get("/cardapio/pedido/:index", function(request, response){ //fazer o pedido
             }
     
     //Gerar uma interface gráfica interativa para escolher um pedido
+
+})
+
+app.post('/adicionar', function(req, res) {
+    carrinho.push(req.body.add)
+    res.redirect('/cardapio')
 
 })
 
