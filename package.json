@@ -1,7 +1,7 @@
 {
   "name": "nuvem",
   "version": "1.0.0",
-  "description": "",
+  "description": "Trabalho AV2/3 nuvem Unifor. Projeto em NodeJS.",
   "main": "index.js",
   "scripts": {
     "vercel": "vercel"
@@ -16,5 +16,14 @@
     "express-session": "^1.17.3",
     "faker": "^5.5.3",
     "js": "^0.1.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuliopss/Dev-nuvem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tuliopss/Dev-nuvem/issues"
+  },
+  "homepage": "https://github.com/tuliopss/Dev-nuvem#readme"
 }
